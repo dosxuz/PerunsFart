@@ -1,0 +1,3 @@
+﻿  PerunsFart.cpp
+PerunsFart.obj : error LNK2019: unresolved external symbol _NtQueryInformationProcess@20 referenced in function _main
+C:\Users\ritab\Project\PerunsFart\Debug\PerunsFart.exe : fatal error LNK1120: 1 unresolved externals
