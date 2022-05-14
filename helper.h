@@ -233,7 +233,7 @@ void OverwriteNtdll(PVOID ntdllBase, PVOID freshntDllBase, PIMAGE_EXPORT_DIRECTO
 				printf("Function Name : %s\n", pczFunctionName);
 				printf("Address of Function in fresh ntdll : 0x%p\n", funcAddress);
 				//Change the write permissions of the .text section of the ntdll in memory
-				DWORD oldprotect = ChangePerms((LPVOID)((DWORD_PTR)ntdllBase + (DWORD_PTR)textsection->VirtualAddress), PAGE_EXECUTE_READWRITE, textsection->Misc.VirtualSize);
+				DWORD oldprotect = ChangePerms((LPVOID)((DWORD_PTR)ntdllBase + (DWORD_PTR)textsection->VirtualAddress), PAGE_EXECUTE_WRITECOPY, textsection->Misc.VirtualSize);
 				//Copy the syscall stub from the fresh ntdll.dll to the hooked ntdll
 				std::memcpy((LPVOID)pFunctionAddress, (LPVOID)funcAddress, 23);
 				//Change back to the old permissions
