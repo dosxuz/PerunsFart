@@ -215,7 +215,7 @@ DWORD ChangePerms(PVOID textBase, DWORD flProtect, SIZE_T size)
 	return oldprotect;
 }
 
-void UnhookMahAss(PVOID ntdllBase, PVOID freshntDllBase, PIMAGE_EXPORT_DIRECTORY hooked_pImageExportDirectory, PIMAGE_EXPORT_DIRECTORY pImageExportDirectory, PIMAGE_SECTION_HEADER textsection)
+void OverwriteNtdll(PVOID ntdllBase, PVOID freshntDllBase, PIMAGE_EXPORT_DIRECTORY hooked_pImageExportDirectory, PIMAGE_EXPORT_DIRECTORY pImageExportDirectory, PIMAGE_SECTION_HEADER textsection)
 {
 	PDWORD pdwAddressOfFunctions = (PDWORD)((PBYTE)ntdllBase + hooked_pImageExportDirectory->AddressOfFunctions);
 	PDWORD pdwAddressOfNames = (PDWORD)((PBYTE)ntdllBase + hooked_pImageExportDirectory->AddressOfNames);
@@ -241,7 +241,7 @@ void UnhookMahAss(PVOID ntdllBase, PVOID freshntDllBase, PIMAGE_EXPORT_DIRECTORY
 			}
 		}
 	}
-	printf("Completed unhooking mah ass\n");
+	printf("Completed Overwriting ntdll.dll\n");
 	getchar();
 }
 
@@ -256,5 +256,5 @@ void DoShit(PVOID ntdllBase, PVOID freshntDllBase, PIMAGE_SECTION_HEADER textsec
 	if (!GetImageExportDirectory(ntdllBase, &hooked_pImageExportDirectory) || hooked_pImageExportDirectory == NULL)
 		printf("Haggu\n");
 
-	UnhookMahAss(ntdllBase, freshntDllBase, hooked_pImageExportDirectory, pImageExportDirectory, textsection);
+	OverwriteNtdll(ntdllBase, freshntDllBase, hooked_pImageExportDirectory, pImageExportDirectory, textsection);
 }
