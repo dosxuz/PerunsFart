@@ -25,4 +25,4 @@ This is my own implementation of the Perun's Fart Evasion technique by Sektor7.
 5) https://www.ired.team/offensive-security/defense-evasion/retrieving-ntdll-syscall-stubs-at-run-time
 
 
-**NOTE: Further testing is required to test against some AV/EDR engines.**
+**Refer to my Blog post explaining this code : https://dosxuz.gitlab.io/post/perunsfart/**
