@@ -250,11 +250,11 @@ void DoShit(PVOID ntdllBase, PVOID freshntDllBase, PIMAGE_SECTION_HEADER textsec
 	PIMAGE_EXPORT_DIRECTORY pImageExportDirectory = NULL;
 
 	if (!GetImageExportDirectory(freshntDllBase, &pImageExportDirectory) || pImageExportDirectory == NULL)
-		printf("Haggu\n");
+		printf("Error\n");
 
 	PIMAGE_EXPORT_DIRECTORY hooked_pImageExportDirectory = NULL;
 	if (!GetImageExportDirectory(ntdllBase, &hooked_pImageExportDirectory) || hooked_pImageExportDirectory == NULL)
-		printf("Haggu\n");
+		printf("Error\n");
 
 	OverwriteNtdll(ntdllBase, freshntDllBase, hooked_pImageExportDirectory, pImageExportDirectory, textsection);
 }
